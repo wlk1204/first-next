@@ -1,0 +1,23 @@
+.pie {
+  width: 600px;
+  height: 400px;
+  margin: 20px;
+}
+.addBtn {
+  margin-left: 80px;
+}
+.removeBtn {
+  margin-left: 40px;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+

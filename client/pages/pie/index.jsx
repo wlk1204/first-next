@@ -1,6 +1,6 @@
 import React from 'react';
 import render from './render';
-import './index.scss';
+import styles from './index.scss';
 
 class Pie extends React.Component {
   constructor(props) {
@@ -60,10 +60,10 @@ class Pie extends React.Component {
     this.option = { width: 200, height: 200, colors: ['#4AE0FF', '#4A7BFF'] };
     return (
       <div>
-        <div className="pie" style={{width: '200px', height: '200px'}} ref={(node) => { this.pieChart = node; }} />
+        <div className={styles.pie} ref={(node) => { this.pieChart = node; }} />
         <input value={this.state.a} onChange={this.changeA} />
         <input value={this.state.b} onChange={this.changeB} />
-        <button id="we" onClick={this.submit}>提交</button>
+        <button onClick={this.submit}>提交</button>
       </div>
     );
   }
