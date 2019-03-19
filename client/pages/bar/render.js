@@ -18,10 +18,10 @@ render.drawChart = (id, data, options) => {
 
 render.animate = (id, oldData, data, options) => {
   const { width = 0, height = 0, colors } = options || {};
-  d3.select(id).select('.barchart')
+  const svg = d3.select(id).select('.barchart')
     .attr('width', width)
     .attr('height', height);
-  const svg = d3.select(id).select('.barchart');
+
   const update = svg.selectAll('.gRect').data(data);
   const enter = update.enter();
   const exit = update.exit();
@@ -32,7 +32,7 @@ render.animate = (id, oldData, data, options) => {
   const updateY = svg.selectAll('.gYAxis').data([1]);
   const enterY = updateY.enter();
 
-  const duration = 800;
+  const duration = 600;
   const rectWidth = width / data.length / 3;
   const Max = d3.max(data.map((item) => item.value));
   const name = data.map((item) => item.name);
@@ -86,7 +86,7 @@ render.animate = (id, oldData, data, options) => {
 
   exit.select('rect')
     .transition()
-    .duration(duration)
+    .duration(300)
     .attr('height', 0)
     .attr('y', d => chartHeight)
     .remove()
