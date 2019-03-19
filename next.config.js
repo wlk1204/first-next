@@ -3,6 +3,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
+if (typeof require !== 'undefined') {
+  require.extensions['.css'] = (file) => {}
+}
+
 const conf = withTypescript({
   webpack(config, options) {
     const { dev, isServer } = options;

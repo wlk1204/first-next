@@ -18,7 +18,7 @@ render.drawChart = (id, data, options) => {
     .attr('height', height)
     .attr('id', 'canvas');
 
-  dom = document.createElement('svg')
+  dom = document.createElement('custom')
 
   // dom = d3.select(id).append('custom').node()
 };
