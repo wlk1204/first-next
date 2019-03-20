@@ -9,7 +9,7 @@ class HelloUA extends React.Component {
   render() {
     return (
       <div>
-        Hello World {this.props.userAgent}
+        Hello World !
       </div>
     )
   }

@@ -1,11 +1,7 @@
 import * as d3 from 'd3';
-import styles from './index.scss';
-import { createContext } from 'react';
-import { func } from 'prop-types';
 
-const render = {};
-let color = '';
-let dom = null;
+const render: any = {};
+let dom: any = null;
 
 render.drawChart = (id, data, options) => {
   d3.select(id).selectAll('#canvas').remove();
@@ -24,7 +20,7 @@ render.drawChart = (id, data, options) => {
 };
 
 render.animate = (id, oldData, data, options) => {
-  const { width = 0, height = 0, colors } = options || {};
+  const { width = 0, height = 0, colors = [] } = options || {};
   const canvas = d3.select(id).select('#canvas')
     .attr('width', width)
     .attr('height', height)
@@ -143,7 +139,7 @@ render.animate = (id, oldData, data, options) => {
     exit.select('rect').transition()
       .duration(duration / 2)
       .attr('height', 0)
-      .attr('y', d => chartHeight + paddingTop)
+      .attr('y', chartHeight + paddingTop)
       .remove()
 
     exit.transition()
@@ -168,25 +164,25 @@ render.animate = (id, oldData, data, options) => {
     // x 轴
     enterX.append('g')
       .attr('class', 'gXAxis')
-      .attr('transform', d => `translate(${xScale(1) + rectWidth / 2}, ${chartHeight + paddingTop})`)
+      .attr('transform', `translate(${xScale(1) + rectWidth / 2}, ${chartHeight + paddingTop})`)
       .call(Xaxis)
 
     updateX
       .transition()
       .duration(duration)
-      .attr('transform', d => `translate(${xScale(1) + rectWidth / 2}, ${chartHeight + paddingTop})`)
+      .attr('transform', `translate(${xScale(1) + rectWidth / 2}, ${chartHeight + paddingTop})`)
       .call(Xaxis)
 
      // y 轴
     enterY.append('g')
       .attr('class', 'gYAxis')
-      .attr('transform', d => `translate(${xScale(1)}, ${paddingTop})`)
+      .attr('transform', `translate(${xScale(1)}, ${paddingTop})`)
       .call(Yaxis)
 
     updateY
       .transition()
       .duration(duration)
-      .attr('transform', d => `translate(${xScale(1)}, ${paddingTop})`)
+      .attr('transform', `translate(${xScale(1)}, ${paddingTop})`)
       .call(Yaxis)
   }
 

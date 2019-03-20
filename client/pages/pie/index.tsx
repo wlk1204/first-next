@@ -1,8 +1,11 @@
 import React from 'react';
 import render from './render';
-import styles from './index.scss';
+import styles from './style.scss';
 
-class Pie extends React.Component {
+class Pie extends React.Component<any, any> {
+  oldData: any[];
+  pieChart: any;
+  option: any;
   constructor(props) {
     super(props);
     this.state = {

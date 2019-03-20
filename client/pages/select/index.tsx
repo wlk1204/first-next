@@ -1,8 +1,9 @@
 import React from 'react';
 import * as d3 from 'd3';
-import styles from './index.scss';
+import styles from './style.scss';
 
 class Select extends React.Component {
+  div: any;
   constructor(props) {
     super(props);
     this.state = {};
@@ -19,7 +20,7 @@ class Select extends React.Component {
       .data(['A', 'B', 'C'])
       // .enter()
       // .append('p')
-      .text((d, i) => {
+      .text((d) => {
         return d;
       })
   }

@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 
-const render = {};
+const render: any = {};
 
 render.drawChart = (id, data, options) => {
   d3.select(id).selectAll('.piechart').remove();
@@ -15,10 +15,11 @@ render.drawChart = (id, data, options) => {
 };
 
 render.animate = (id, oldData, data, options) => {
-  const { width = 0, height = 0, colors } = options || {};
+  const { width = 0, height = 0, colors = [] } = options || {};
   d3.select(id).select('.piechart')
     .attr('width', width)
     .attr('height', height);
+
   const pie = d3.pie()
     .sort(null)
     .value(d => d.num);
