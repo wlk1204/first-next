@@ -27,11 +27,11 @@ render.animate = (id, oldData, data, options) => {
   const update = d3.select(id).select('.piechart').selectAll('g').data(pie(data));
   const enter = update.enter();
 
-  const duration = 2000;
+  const duration = 3000;
   const radius = Math.min(width, height) / 2;
 
   const arc = d3.arc()
-    .innerRadius(0)
+    .innerRadius(radius * 0.7)
     .outerRadius(radius - radius * 0.1);
 
   update.select('path')
@@ -49,18 +49,14 @@ render.animate = (id, oldData, data, options) => {
     .attr('transform', `translate(${width / 2}, ${height / 2})`)
     .style('fill', (d, i) => colors[i])
     .transition()
-    .ease(d3.easeCubicInOut)
+    .ease(d3.easeBounceOut)
     .duration(duration)
     .attrTween('d', tweenPie);
 
   function tweenPie(d) {
     const i = d3.interpolate({ startAngle: 0, endAngle: 0 }, d); // 弧度差值
-    const k = d3.interpolate(0, radius - radius * 0.1); // 半径差值
     return (t) => {
-      const arc2 = d3.arc()
-        .innerRadius(0)
-        .outerRadius(k(t));
-      return arc2(i(t));
+      return arc(i(t));
     };
   }
 }
